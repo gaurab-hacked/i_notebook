@@ -11,7 +11,7 @@ const EachCards = (props) => {
                     <h5 className="card-title">{data.title}</h5>
                     <p className="card-text">{data.discription}</p>
                     <div className='d-flex justify-content-around'>
-                        <h6 className="card-subtitle mb-2 text-muted mx-2 my-1"> -  {data.author[0].toUpperCase() + data.author.substring(1) || "User"}</h6>
+                        <h6 className="card-subtitle mb-2 text-muted mx-2 my-1"> -  {data.category[0].toUpperCase() + data.category.substring(1) || "User"}</h6>
                         <p style={{ color: "rgb(0,0,0,.7)", fontSize: "14px", marginTop: "5px" }}><b style={{ color: "rgb(0, 0, 0, .5)" }}> Date:</b>  {data.date === undefined ? "now" : data.date.substring(0, 10)}</p>
                     </div>
 

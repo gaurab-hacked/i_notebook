@@ -5,7 +5,7 @@ import Cards from './Cards';
 
 const NoteForm = () => {
     const { postNote, allNote, getALlNote} = useContext(NoteContext); //allNote
-    const [inpValue, setInpValue] = useState({ title: "", discription: "", author: "" });
+    const [inpValue, setInpValue] = useState({ title: "", discription: "", category: "" });
 
     const inpFldChange = (e) => {
         setInpValue({ ...inpValue, [e.target.name]: e.target.value })
@@ -13,9 +13,9 @@ const NoteForm = () => {
 
     const addBtnClk = (e) => {
         e.preventDefault();
-        if (inpValue.title.length >= 5 && inpValue.discription.length >= 10 && inpValue.author.length >= 4) {
+        if (inpValue.title.length >= 5 && inpValue.discription.length >= 10 && inpValue.category.length >= 4) {
             totalNote.push(inpValue)
-            setInpValue({ title: "", discription: "", author: "" });
+            setInpValue({ title: "", discription: "", category: "" });
             postNote(inpValue, 'http://localhost:4000/api/note/uploadNote');
         }
     }
@@ -41,8 +41,8 @@ const NoteForm = () => {
                     <input type="text" name='discription' className="form-control" id="exampleInputPassword1" value={inpValue.discription} onChange={inpFldChange} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Author:</label>
-                    <input type="text" name='author' className="form-control" id="exampleInputPassword1" value={inpValue.author} onChange={inpFldChange} />
+                    <label htmlFor="exampleInputPassword1" className="form-label">Category:</label>
+                    <input type="text" name='category' className="form-control" id="exampleInputPassword1" value={inpValue.category} onChange={inpFldChange} />
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={addBtnClk}>Add Note</button>
             </form>

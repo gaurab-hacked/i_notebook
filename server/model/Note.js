@@ -4,7 +4,7 @@ const Note = mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId,
     title: String,
     discription: String,
-    author: String,
+    category: String,
     date:{
         type: Date,
         default: Date.now()

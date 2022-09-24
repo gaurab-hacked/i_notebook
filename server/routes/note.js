@@ -18,8 +18,8 @@ route.get("/fetchNote", fetchuser, async (req, res) => {
 route.post("/uploadNote", fetchuser, async (req, res) => {
     try {
         const userId = req.user.id;
-        const { title, discription, author } = req.body;
-        const note = new Note({ userId, title, discription, author });
+        const { title, discription, category } = req.body;
+        const note = new Note({ userId, title, discription, category });
         await note.save();
         res.json({ success: "Note saved success" });
     } catch (error) {
