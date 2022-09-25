@@ -4,12 +4,12 @@ import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
     const [allNote, setAllNote] = useState([]);
+    const host = 'http://localhost:4000';
 
-
-    
     // Fetch all notes
     const getALlNote = async () => {
-        const url = 'http://localhost:4000/api/note/fetchNote';
+        const url = `${host}/api/note/fetchNote`;
+        //API call
         const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
@@ -25,10 +25,11 @@ const NoteState = (props) => {
         const res = await response.json();
         setAllNote(res);
     }
-    
+
     // post notes add by users
-    const postNote = async (data, urlP) => {
-        const url = urlP;
+    const postNote = async (data) => {
+        //API call
+        const url = `${host}/api/note/uploadNote`;
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -43,14 +44,17 @@ const NoteState = (props) => {
             body: JSON.stringify(data)
         });
         const res = await response.json();
-        console.log(res);
+        //for frontend
+        let datas = [res.note]
+        setAllNote(allNote.concat(datas));
+
     }
-    
+
 
     // delete note
-    const deleteNote = async (id)=>{
-        // console.log("Note Deleted "+ id)
-        const url = `http://localhost:4000/api/note/deletenote/${id}`;
+    const deleteNote = async (id) => {
+        //API call
+        const url = `${host}/api/note/deletenote/${id}`;
         const response = await fetch(url, {
             method: 'DELETE',
             mode: 'cors',
@@ -65,12 +69,21 @@ const NoteState = (props) => {
         });
         const res = await response.json();
         console.log(res);
+
+        const filterNote = (e) => {
+            return e._id !== id;
+        }
+        //for frontend
+        const newnote = allNote.filter(filterNote)
+        setAllNote(newnote);
+
     }
 
 
     //update note
-    const updateNotef = async (data, urlP) => {
-        const url = urlP;
+    const updateNotef = async (data, id) => {
+        //API call
+        const url = `${host}/api/note/updatenote/${id}`;
         const response = await fetch(url, {
             method: 'PUT',
             mode: 'cors',
@@ -85,13 +98,25 @@ const NoteState = (props) => {
             body: JSON.stringify(data)
         });
         const res = await response.json();
-        console.log(res);
+        const { discription, title } = res.updatedNote
+
+
+        //for frontend
+        for (let i = 0; i < allNote.length; i++) {
+            const element = allNote[i];
+            if (element._id === id) {
+                element.title = title;
+                element.discription = discription;
+                setAllNote([...allNote])
+            }
+        }
     }
 
 
 
+
     return (
-        <NoteContext.Provider value={{allNote, postNote, getALlNote, deleteNote, updateNotef}}>
+        <NoteContext.Provider value={{ allNote, postNote, getALlNote, deleteNote, updateNotef }}>
             {props.children}
         </NoteContext.Provider>
     )

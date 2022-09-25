@@ -1,0 +1,47 @@
+#profile{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgb(157, 205, 204);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    box-shadow: 0 0 5px 0 gray;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+#card{
+    height: 300px;
+    width: 300px;
+    background-color: rgb(204, 239, 242);
+    position: absolute;
+    right: 10px;
+    top: 10vh;
+    border-radius: 5px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 5px 0 rgb(0, 0, 0, .7);
+}
+.cardHide{
+    transform: translateY(-400px)!important;
+    transition: .5s!important;
+}
+.cardShow{
+    transform: translateY(0px)!important;
+    transition: .5s!important;
+}
+#card h5{
+    margin-top: 30px;
+}
+#card p{
+    padding: 10px 25px;
+    text-align: center;
+}
+#card .totalNoteDis{
+    /* font-size: 1px; */
+    font-weight: 600;
+}

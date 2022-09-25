@@ -9,6 +9,8 @@ const Home = () => {
   const {userData} = useContext(UserContext);
   const rawName = userData.name||"User";
 
+
+
   const Name = rawName[0].toUpperCase() + rawName.substring(1);
 
 
@@ -28,6 +30,7 @@ const Home = () => {
 
   return (
     <div className='container'>
+      {/* <input type="text" placeholder='Search' value={searchVal} onChange={searchValChange}/> */}
       <h1 className='text-center my-3' style={{textDecoration: "underline"}}>Hello {Name}</h1>
       <NoteForm/>
     </div>

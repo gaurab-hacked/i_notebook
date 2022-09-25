@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import NoteContext from '../context/NoteContext';
 import EachCards from './EachCards';
 
 
 const Cards = (props) => {
     const ref = useRef(null)
-    const { updateNotef } = useContext(NoteContext);
+    const { updateNotef,getALlNote  } = useContext(NoteContext);
     const [inpValue, setInpValue] = useState({ title: "", discription: ""});
     const [noteId, setNoteId] = useState("");
 
@@ -14,14 +14,19 @@ const Cards = (props) => {
         setNoteId(id);
     }
 
-    
+    useEffect(() => {
+        if(localStorage.getItem('auth-token')){
+            getALlNote();
+        }// eslint-disable-next-line
+    }, [])
+
     const inpFldChange = (e) => {
         setInpValue({ ...inpValue, [e.target.name]: e.target.value })
     }
     const UpdateBtnClk = (e) =>{
         e.preventDefault();
         if(noteId.length>=20){
-            updateNotef(inpValue, `http://localhost:4000/api/note/updatenote/${noteId}`)
+            updateNotef(inpValue,noteId)
             ref.current.click();
         }
         setInpValue({ title: "", discription: ""});

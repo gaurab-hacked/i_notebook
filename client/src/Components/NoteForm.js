@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import NoteContext from '../context/NoteContext';
 import Cards from './Cards';
 
 
 const NoteForm = () => {
-    const { postNote, allNote, getALlNote} = useContext(NoteContext); //allNote
+    const { postNote, allNote } = useContext(NoteContext);
+    
     const [inpValue, setInpValue] = useState({ title: "", discription: "", category: "" });
 
     const inpFldChange = (e) => {
@@ -14,20 +15,10 @@ const NoteForm = () => {
     const addBtnClk = (e) => {
         e.preventDefault();
         if (inpValue.title.length >= 5 && inpValue.discription.length >= 10 && inpValue.category.length >= 4) {
-            totalNote.push(inpValue)
             setInpValue({ title: "", discription: "", category: "" });
-            postNote(inpValue, 'http://localhost:4000/api/note/uploadNote');
+            postNote(inpValue);
         }
     }
-
-    useEffect(() => {
-        if(localStorage.getItem('auth-token')){
-            getALlNote();
-        }// eslint-disable-next-line
-    }, [addBtnClk])
-
-    let totalNote = allNote;
-
 
     return (
         <>
@@ -48,7 +39,7 @@ const NoteForm = () => {
             </form>
             <hr />
             <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
-            <Cards cardDetail={totalNote} />
+            <Cards cardDetail={allNote} />
         </>
     )
 }
