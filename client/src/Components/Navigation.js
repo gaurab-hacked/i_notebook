@@ -1,19 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import NoteContext from '../context/NoteContext';
+import SearchContext from '../context/SearchContext';
 import UserContext from '../context/UserContext';
 import './css/Navigation.css'
 
 
 const Navigation = () => {
+    const { searchVal, setSearchVal, cardhide, setCardhide } = useContext(SearchContext);
     const { allNote } = useContext(NoteContext);
     const { setUserData, userData } = useContext(UserContext)
     const path = useLocation().pathname;
     const navigate = useNavigate();
-    const [cardhide, setCardhide] = useState(true);
 
     const LogoutBtnClk = () => {
-        console.log("logged out");
         localStorage.removeItem("auth-token");
         navigate("/login");
         setUserData({});
@@ -31,6 +31,9 @@ const Navigation = () => {
     const cardclicked = () => {
         setCardhide(true)
     }
+    const searchValChange = (e) =>{
+        setSearchVal(e.target.value);
+    }
 
     let name = userData.name;
 
@@ -42,7 +45,7 @@ const Navigation = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" onClick={()=> setCardhide(true)} >
                         <li className="nav-item">
                             <Link className={path === "/" ? "nav-link mx-3 active" : "nav-link mx-3"} aria-current="page" to="/">Home</Link>
                         </li>
@@ -55,6 +58,10 @@ const Navigation = () => {
 
                     </ul>
 
+                    <form className="d-flex mx-5" onClick={()=> setCardhide(true)}>
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchVal} onChange={searchValChange}/>
+                            {/* <button className="btn btn-outline-success btn-sm" type="submit">Search</button> */}
+                    </form>
                     {localStorage.getItem('auth-token') ? <div id='profile' onClick={profileclk}><i className="fa-solid fa-user"></i></div> :
                         <>
                             <Link className={path === "/login" ? "nav-link active mx-1" : "nav-link mx-1"} aria-current="page" to="/login">
@@ -70,7 +77,7 @@ const Navigation = () => {
                         </>
                     }
 
-                    <div id='card' className={cardhide ? `cardHide` : `cardShow`} onClick={cardclicked}>
+                    <div id='card' className={cardhide ? `cardHide` : `cardShow`} >
                         <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
                         <p>Thank you for using this website to save your note</p>
                         <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>

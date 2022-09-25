@@ -20,7 +20,7 @@ const NoteForm = () => {
     const addBtnClk = (e) => {
         e.preventDefault();
         //validation
-        if (inpValue.title.length <= 5) {
+        if (inpValue.title.length < 5) {
             toast.error(<div id="tost">Title must be greater than 5 character</div>);
         }
         else if (inpValue.discription.length <= 10) {

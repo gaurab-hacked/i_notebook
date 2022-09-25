@@ -38,7 +38,6 @@ const UserState = (props) => {
             navigate("/");
         }
         else {
-            console.log(res);
             toast.error(<div id="tost">{res.msg}</div>);
         }
     }

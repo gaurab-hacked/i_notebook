@@ -6,11 +6,8 @@ import Login from "./Components/Login";
 import Navigation from "./Components/Navigation";
 import Register from "./Components/Register";
 import NoteState from "./context/NoteState";
+import SearchState from "./context/SearchState";
 import UserState from "./context/UserState";
-
-
-
-
 
 
 function App() {
@@ -18,14 +15,16 @@ function App() {
     <BrowserRouter>
       <UserState>
         <NoteState>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/allnotes" element={<Allnotes />} />
-            <Route path="/ablutus" element={<Aboutus />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
+          <SearchState>
+            <Navigation />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/allnotes" element={<Allnotes />} />
+              <Route path="/ablutus" element={<Aboutus />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </SearchState>
         </NoteState>
       </UserState>
     </BrowserRouter>

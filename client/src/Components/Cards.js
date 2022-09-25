@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import NoteContext from '../context/NoteContext';
+import SearchContext from '../context/SearchContext';
 import EachCards from './EachCards';
 
 
 const Cards = (props) => {
     const ref = useRef(null)
-    const { updateNotef,getALlNote  } = useContext(NoteContext);
-    const [inpValue, setInpValue] = useState({ title: "", discription: ""});
+    const { updateNotef, getALlNote } = useContext(NoteContext);
+    const [inpValue, setInpValue] = useState({ title: "", discription: "" });
     const [noteId, setNoteId] = useState("");
+    const { searchVal } = useContext(SearchContext);
 
     const updateNote = (id) => {
         ref.current.click();
@@ -15,7 +17,7 @@ const Cards = (props) => {
     }
 
     useEffect(() => {
-        if(localStorage.getItem('auth-token')){
+        if (localStorage.getItem('auth-token')) {
             getALlNote();
         }// eslint-disable-next-line
     }, [])
@@ -23,20 +25,36 @@ const Cards = (props) => {
     const inpFldChange = (e) => {
         setInpValue({ ...inpValue, [e.target.name]: e.target.value })
     }
-    const UpdateBtnClk = (e) =>{
+    const UpdateBtnClk = (e) => {
         e.preventDefault();
-        if(noteId.length>=20){
-            updateNotef(inpValue,noteId)
+        if (noteId.length >= 20) {
+            updateNotef(inpValue, noteId)
             ref.current.click();
         }
-        setInpValue({ title: "", discription: ""});
+        setInpValue({ title: "", discription: "" });
     }
 
 
-    const totalNote = props.cardDetail;
+    let showErrMsg = false
+    // search functionality
+    let totalNote = props.cardDetail;
+    let index = searchVal.length;
+    if (searchVal.length >= 2) {
+        const searchedNote = totalNote.filter((e) => {
+            return (e.title.slice(0, index)).toLowerCase() === searchVal.toLowerCase();
+        })
+        totalNote = searchedNote
+    }
+    if (totalNote.length === 0) {
+        showErrMsg = true
+    }
+
+
+
+
+
     return (
         <div className='container'>
-            <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
             <button type="button" ref={ref} data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{ display: "none" }}>
             </button>
 
@@ -62,13 +80,20 @@ const Cards = (props) => {
             </div>
             <div className='row'>
                 {
-                    totalNote.map((e) => {
-                        return (
-                            <div key={e.discription} className="col-md-2 mx-5 my-4">
-                                <EachCards elements={e} updateNote={updateNote}/>
-                            </div>
-                        )
-                    })
+
+                    showErrMsg ? <h1 className='text-center my-5'>Note Doesn't Exist</h1> :
+                        <>
+                            <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
+                            {
+                                totalNote.map((e) => {
+                                    return (
+                                        <div key={e.discription} className="col-md-2 mx-5 my-4">
+                                            <EachCards elements={e} updateNote={updateNote} showErrMsg={showErrMsg} />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </>
                 }
             </div>
         </div>

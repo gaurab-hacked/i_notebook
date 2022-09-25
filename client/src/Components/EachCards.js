@@ -6,6 +6,7 @@ const EachCards = (props) => {
     const data = props.elements;
     return (
         <>
+
             <div className="card" style={{ width: "18rem" }} key={data.discription}>
                 <div className="card-body">
                     <h5 className="card-title">{data.title}</h5>
