@@ -28,7 +28,12 @@ const Navigation = () => {
             setCardhide(true);
         }
     }
-    
+    const cardclicked = () => {
+        setCardhide(true)
+    }
+
+    let name = userData.name;
+
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -65,8 +70,8 @@ const Navigation = () => {
                         </>
                     }
 
-                    <div id='card' className={cardhide ? `cardHide` : `cardShow`}>
-                        <h5>Hello {userData.name}</h5>
+                    <div id='card' className={cardhide ? `cardHide` : `cardShow`} onClick={cardclicked}>
+                        <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
                         <p>Thank you for using this website to save your note</p>
                         <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>
                         <button className='btn btn-primary btn-sm mx-5' onClick={LogoutBtnClk}>Logout</button>

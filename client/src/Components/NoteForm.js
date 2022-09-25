@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/NoteContext';
 import Cards from './Cards';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -55,7 +55,6 @@ const NoteForm = () => {
                 <button type="submit" className="btn btn-primary" onClick={addBtnClk}>Add Note</button>
             </form>
             <hr />
-            <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
             <Cards cardDetail={allNote} />
         </>
     )

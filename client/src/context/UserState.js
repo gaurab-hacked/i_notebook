@@ -1,13 +1,16 @@
 import UserContext from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserState = (props) => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({});
 
     useEffect(() => {
-        if(localStorage.getItem('auth-token')){
+        if (localStorage.getItem('auth-token')) {
             getUserData();
         }
     }, [navigate])
@@ -34,6 +37,10 @@ const UserState = (props) => {
             localStorage.setItem("auth-token", res.Key);
             navigate("/");
         }
+        else {
+            console.log(res);
+            toast.error(<div id="tost">{res.msg}</div>);
+        }
     }
 
     const getUserData = async () => {
@@ -57,9 +64,16 @@ const UserState = (props) => {
 
 
     return (
-        <UserContext.Provider value={{ postData, userData, setUserData}}>
-            {props.children};
-        </UserContext.Provider>
+        <>
+            <UserContext.Provider value={{ postData, userData, setUserData }}>
+                {props.children};
+            </UserContext.Provider>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                theme="colored"
+            />
+        </>
     )
 }
 export default UserState;

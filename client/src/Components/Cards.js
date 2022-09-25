@@ -36,6 +36,7 @@ const Cards = (props) => {
     const totalNote = props.cardDetail;
     return (
         <div className='container'>
+            <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
             <button type="button" ref={ref} data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{ display: "none" }}>
             </button>
 

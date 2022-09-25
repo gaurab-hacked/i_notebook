@@ -3,11 +3,11 @@
     width: 40px;
     border-radius: 50%;
     background-color: rgb(157, 205, 204);
+    box-shadow: 0 0 5px 0 gray;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    box-shadow: 0 0 5px 0 gray;
     cursor: pointer;
     margin-right: 30px;
 }
@@ -17,7 +17,7 @@
     width: 300px;
     background-color: rgb(204, 239, 242);
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 10vh;
     border-radius: 5px;
     z-index: 100;
@@ -35,7 +35,8 @@
     transition: .5s!important;
 }
 #card h5{
-    margin-top: 30px;
+    margin-top: 60px;
+
 }
 #card p{
     padding: 10px 25px;
@@ -44,4 +45,23 @@
 #card .totalNoteDis{
     /* font-size: 1px; */
     font-weight: 600;
+}
+
+#card::after{
+    content: "";
+    position: absolute;
+    transform: translateY(-257px);
+    margin: auto;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    left: 5px;
+    height: 85px;
+    width: 85px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 gray;
+    background-image:url('https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg?ver=6');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }

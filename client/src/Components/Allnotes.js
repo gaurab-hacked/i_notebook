@@ -11,10 +11,11 @@ const Allnotes = () => {
     useEffect(() => {
         if (localStorage.getItem('auth-token')) {
             getALlNote();
-        }// eslint-disable-next-line
-        else{
+        }
+        else {
             navigate("/register")
         }
+        // eslint-disable-next-line
     }, [])
 
     let totalNote = allNote;
@@ -23,9 +24,12 @@ const Allnotes = () => {
 
     return (
         <>
-            <div className='container my-5'>
-                <Cards cardDetail={totalNote} />
-            </div>
+            {
+                totalNote.length === 0 ? <h1 className='text-center my-5'>Please Enter Notes To See Here</h1> : <div className='container my-5'>
+                    <Cards cardDetail={totalNote} />
+                </div>
+            }
+
         </>
     )
 }
