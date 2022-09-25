@@ -1,6 +1,9 @@
 import { useState } from "react";
 import NoteContext from "./NoteContext";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const NoteState = (props) => {
     const [allNote, setAllNote] = useState([]);
@@ -47,6 +50,7 @@ const NoteState = (props) => {
         //for frontend
         let datas = [res.note]
         setAllNote(allNote.concat(datas));
+        toast.success(<div id="tost">{res.success}</div>);
 
     }
 
@@ -68,7 +72,6 @@ const NoteState = (props) => {
             referrerPolicy: 'no-referrer'
         });
         const res = await response.json();
-        console.log(res);
 
         const filterNote = (e) => {
             return e._id !== id;
@@ -76,7 +79,7 @@ const NoteState = (props) => {
         //for frontend
         const newnote = allNote.filter(filterNote)
         setAllNote(newnote);
-
+        toast.success(<div id="tost">{res.success}</div>);
     }
 
 
@@ -110,15 +113,23 @@ const NoteState = (props) => {
                 setAllNote([...allNote])
             }
         }
+        toast.success(<div id="tost">{res.update}</div>);
     }
 
 
 
 
     return (
-        <NoteContext.Provider value={{ allNote, postNote, getALlNote, deleteNote, updateNotef }}>
-            {props.children}
-        </NoteContext.Provider>
+        <>
+            <NoteContext.Provider value={{ allNote, postNote, getALlNote, deleteNote, updateNotef }}>
+                {props.children}
+            </NoteContext.Provider>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                theme="colored"
+            />
+        </>
     )
 
 }

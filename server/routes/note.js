@@ -21,7 +21,7 @@ route.post("/uploadNote", fetchuser, async (req, res) => {
         const { title, discription, category } = req.body;
         const note = new Note({ userId, title, discription, category });
         await note.save();
-        res.json({ success: "Note saved success", note:note });
+        res.json({ success: "Note Added", note:note });
     } catch (error) {
         res.status(500).json({ error, msg: "Server error" })
     }
@@ -39,7 +39,7 @@ route.delete("/deletenote/:id", fetchuser, async (req, res) => {
         if (userId !== note.userId.toString()) return res.json({msg:"Sorry you change something please enter valid credentials"});
         //check note and delete it
         await Note.findByIdAndDelete(noteId);
-        res.json({ success: "delete success" });
+        res.json({ success: "Note Delete Success" });
     } catch (error) {
         res.status(500).json({ error, msg: "Server error" })
     }
@@ -62,7 +62,7 @@ route.put("/updatenote/:id", fetchuser, async (req, res) => {
         if (userId !== note.userId.toString()) return res.json({msg:"Access denide"});
         //find note and update
         const updatedNote = await Note.findByIdAndUpdate(noteId, { $set: newNote }, { new: true });
-        res.json({update:"update success", updatedNote});
+        res.json({update:"Note Update Success", updatedNote});
     } catch (error) {
         res.status(500).json({ error, msg: "Server error" })
     }
