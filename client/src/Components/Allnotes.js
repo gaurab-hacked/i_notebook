@@ -9,6 +9,7 @@ const Allnotes = () => {
 
     const navigate = useNavigate();
     useEffect(() => {
+        document.title = 'I-NoteBook AllNote'
         if (localStorage.getItem('auth-token')) {
             getALlNote();
         }

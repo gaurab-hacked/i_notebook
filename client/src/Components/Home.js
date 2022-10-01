@@ -18,6 +18,7 @@ const Home = () => {
   //to navigate unathorige users
   const navigate = useNavigate();
   useEffect(() => {
+    document.title = 'I-NoteBook'
     if(localStorage.getItem("auth-token")===null){
       navigate("/register");
     };// eslint-disable-next-line
