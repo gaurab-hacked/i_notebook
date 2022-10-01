@@ -15,6 +15,8 @@ const Home = () => {
 
 
   const Name = rawName[0].toUpperCase() + rawName.substring(1);
+  const fName = Name.split(" ")[0];
+
 
 
   
@@ -30,7 +32,7 @@ const Home = () => {
   return (
     <div className='container' onClick={()=> setCardhide(true)}>
       {/* <input type="text" placeholder='Search' value={searchVal} onChange={searchValChange}/> */}
-      <h1 className='text-center my-3' style={{textDecoration: "underline"}}>Hello {Name}</h1>
+      <h2 className='text-center my-3'>Hello {fName}, Please Enter Your Note Here!!!</h2>
       <NoteForm/>
     </div>
   )

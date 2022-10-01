@@ -1,14 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import NoteContext from '../context/NoteContext';
 const EachCards = (props) => {
     const  {updateNote} = props;
     const { deleteNote } = useContext(NoteContext);
     const data = props.elements;
+    const [copyMsg, setCopyMsg] = useState("Copy");
+    const copyfun = () =>{
+        navigator.clipboard.writeText(data.discription);
+        setCopyMsg("Copied")
+
+    }
     return (
         <>
 
             <div className="card" style={{ width: "18rem" }} key={data.discription}>
                 <div className="card-body">
+                    <button onClick={copyfun} className='btn btn-secondary btn-sm' style={{position:"absolute", right:"10px"}}>{copyMsg}</button>
                     <h5 className="card-title">{data.title}</h5>
                     <p className="card-text">{data.discription}</p>
                     <div className='d-flex justify-content-around'>

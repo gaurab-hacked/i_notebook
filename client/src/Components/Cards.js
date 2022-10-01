@@ -49,10 +49,6 @@ const Cards = (props) => {
         showErrMsg = true
     }
 
-
-
-
-
     return (
         <div className='container'>
             <button type="button" ref={ref} data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{ display: "none" }}>
