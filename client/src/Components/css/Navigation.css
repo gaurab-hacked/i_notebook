@@ -121,11 +121,11 @@
     font-size: 22px;
     text-decoration: none;
     color: rgb(0, 18, 65);
+    font-family:'Times New Roman', Times, serif;
 }
 #LogoN{
     font-size: 30px;
-    /* color: var(--primaryColor); */
-    transform: rotateZ(15deg);
+    color: black;
     font-weight: 800;
 }
 .navRightSide{

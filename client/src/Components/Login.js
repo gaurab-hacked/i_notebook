@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../context/UserContext';
+import './css/Login.css'
 
 const Login = () => {
-    const {postData} = useContext(UserContext);
-    const [initialVal, setInitialVal] = useState({email:"", password:""});
+    const { postData } = useContext(UserContext);
+    const [initialVal, setInitialVal] = useState({ email: "", password: "" });
 
-    const fieldChangeFun = (e) =>{
-        setInitialVal({...initialVal, [e.target.name]:e.target.value});
+    const fieldChangeFun = (e) => {
+        setInitialVal({ ...initialVal, [e.target.name]: e.target.value });
     }
 
     const handelSubmit = (e) => {
@@ -16,18 +17,22 @@ const Login = () => {
 
 
     return (
-        <div className='container my-5'>
-            <h2 className='text-center my-2'>Please Login To See Your Notes</h2>
-            <form>
-                <div className="mb-3 p-2">
-                    <label htmlFor="email" className="form-label">Email address:</label>
-                    <input type="email" name='email' className="form-control" id="email" aria-describedby="emailHelp" placeholder='Enter Your Email Address' value={initialVal.email} onChange={fieldChangeFun}/>
+        <div id="loginform">
+            <form action="#">
+                <div className="heading">
+                    <h1>I-NoteBook</h1>
+                    <h3>Please Login To See Your Notes:</h3>
                 </div>
-                <div className="mb-3 p-2">
-                    <label htmlFor="password" className="form-label">Password:</label>
-                    <input type="password" name='password' className="form-control" id="password" placeholder='Enter Your Password'  value={initialVal.password} onChange={fieldChangeFun}/>
+                <div className="input">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email" value={initialVal.email} onChange={fieldChangeFun}/>
                 </div>
-                <button type="submit" className="btn btn-primary m-2" onClick={handelSubmit}>Submit</button>
+                <div className="input">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="Enter Your Password" value={initialVal.password} onChange={fieldChangeFun}/>
+                </div>
+                <a href="./Register.html">I don't have account SignUp?</a>
+                <button onClick={handelSubmit}>Log-In</button>
             </form>
         </div>
     )

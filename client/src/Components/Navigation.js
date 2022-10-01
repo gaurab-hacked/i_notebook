@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import NoteContext from '../context/NoteContext';
 import SearchContext from '../context/SearchContext';
@@ -30,11 +30,16 @@ const Navigation = () => {
     const searchValChange = (e) => {
         setSearchVal(e.target.value);
     }
+    useEffect((e)=>{
+        if(localStorage.getItem("auth-token")){
+            navigate('/login');
+        }
+    },[])
 
     let name = userData.name;
     return (
         <nav id='navigation'>
-            <div id="logo"><Link to='/'><span id='LogoN'>N</span> ote<span id='LogoN'>B</span>ook</Link></div>
+            <div id="logo"><Link to='/'>I-<span id='LogoN'>N</span> oteBook</Link></div>
             <ul className="navlinks flex">
                 <li><Link className={path === "/" ? "active" : ""} aria-current="page" to="/">Home</Link></li>
                 <li><Link className={path === "/allnotes" ? "active" : ""} aria-current="page" to="/allnotes">All Notes</Link></li>
