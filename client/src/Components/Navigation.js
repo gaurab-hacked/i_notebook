@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import NoteContext from '../context/NoteContext';
 import SearchContext from '../context/SearchContext';
@@ -30,48 +30,46 @@ const Navigation = () => {
     const searchValChange = (e) => {
         setSearchVal(e.target.value);
     }
-    useEffect((e)=>{
-        if(localStorage.getItem("auth-token")){
-            navigate('/login');
-        }
-    },[])
 
     let name = userData.name;
     return (
-        <nav id='navigation'>
-            <div id="logo"><Link to='/'>I-<span id='LogoN'>N</span> oteBook</Link></div>
-            <ul className="navlinks flex">
-                <li><Link className={path === "/" ? "active" : ""} aria-current="page" to="/">Home</Link></li>
-                <li><Link className={path === "/allnotes" ? "active" : ""} aria-current="page" to="/allnotes">All Notes</Link></li>
-                <li><Link className={path === "/ablutus" ? "active" : ""} aria-current="page" to="/ablutus">About Us</Link></li>
-            </ul>
-            <div className="navRightSide flex">
-                <div id="search">
-                    <input type="search" placeholder="Search" aria-label="Search" value={searchVal} onChange={searchValChange} />
-                </div>
-                {localStorage.getItem('auth-token') ? <div id='profile' onClick={profileclk}><i className="fa-solid fa-user"></i></div> :
-                    <>
-                        <Link aria-current="page" to="/login">
-                            <button className='button'>
-                                LogIn
-                            </button>
-                        </Link>
-                        <Link aria-current="page" to="/register">
-                            <button className='checkedbutton'>
-                                Register
-                            </button>
-                        </Link>
-                    </>
-                }
+        <>{localStorage.getItem('auth-token') &&
+            <nav id='navigation'>
+                <div id="logo" > <Link to='/'>I- <span id='LogoN'>N</span> oteBook</Link></div>
+                <ul className="navlinks flex">
+                    <li><Link className={path === "/" ? "active" : ""} aria-current="page" to="/">Home</Link></li>
+                    <li><Link className={path === "/allnotes" ? "active" : ""} aria-current="page" to="/allnotes">All Notes</Link></li>
+                    <li><Link className={path === "/aboutus" ? "active" : ""} aria-current="page" to="/aboutus">About Us</Link></li>
+                </ul>
+                <div className="navRightSide flex">
+                    <div id="search">
+                        <input type="search" placeholder="Search" aria-label="Search" value={searchVal} onChange={searchValChange} />
+                    </div>
+                    {localStorage.getItem('auth-token') ? <div id='profile' onClick={profileclk}><i className="fa-solid fa-user"></i></div> :
+                        <>
+                            <Link aria-current="page" to="/login">
+                                <button className='button'>
+                                    LogIn
+                                </button>
+                            </Link>
+                            <Link aria-current="page" to="/register">
+                                <button className='checkedbutton'>
+                                    Register
+                                </button>
+                            </Link>
+                        </>
+                    }
 
-                <div id='card' className={cardhide ? `cardHide` : `cardShow`} >
-                    <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
-                    <p>Thank you for using this website to save your note</p>
-                    <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>
-                    <button className='btn btn-primary btn-sm mx-5' onClick={LogoutBtnClk}>Logout</button>
+                    <div id='card' className={cardhide ? `cardHide` : `cardShow`} >
+                        <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
+                        <p>Thank you for using this website to save your note</p>
+                        <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>
+                        <button className='btn btn-primary btn-sm mx-5' onClick={LogoutBtnClk}>Logout</button>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </ nav >
+        }
+        </>
     )
 }
 

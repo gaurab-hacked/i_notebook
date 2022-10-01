@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import SearchContext from '../context/SearchContext';
 import UserContext from '../context/UserContext';
 import NoteForm from './NoteForm';
@@ -22,7 +22,7 @@ const Home = () => {
       navigate("/register");
     };// eslint-disable-next-line
   }, []);
-
+  
 
   return (
     <div className='container' onClick={()=> setCardhide(true)}>
