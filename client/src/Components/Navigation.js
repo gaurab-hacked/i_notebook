@@ -5,7 +5,6 @@ import SearchContext from '../context/SearchContext';
 import UserContext from '../context/UserContext';
 import './css/Navigation.css'
 
-
 const Navigation = () => {
     const { searchVal, setSearchVal, cardhide, setCardhide } = useContext(SearchContext);
     const { allNote } = useContext(NoteContext);
@@ -28,65 +27,47 @@ const Navigation = () => {
             setCardhide(true);
         }
     }
-    const cardclicked = () => {
-        setCardhide(true)
-    }
-    const searchValChange = (e) =>{
+    const searchValChange = (e) => {
         setSearchVal(e.target.value);
     }
 
     let name = userData.name;
-
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
-            <div className="container-fluid">
-                <Link className="navbar-brand mx-5" to="/">I-Note</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" onClick={()=> setCardhide(true)} >
-                        <li className="nav-item">
-                            <Link className={path === "/" ? "nav-link mx-3 active" : "nav-link mx-3"} aria-current="page" to="/">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={path === "/allnotes" ? "nav-link mx-3 active" : "nav-link mx-3"} aria-current="page" to="/allnotes">All Notes</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={path === "/ablutus" ? "nav-link mx-3 active" : "nav-link mx-3"} aria-current="page" to="/ablutus">About Us</Link>
-                        </li>
+        <nav id='navigation'>
+            <div id="logo"><Link to='/'><span id='LogoN'>N</span> ote<span id='LogoN'>B</span>ook</Link></div>
+            <ul className="navlinks flex">
+                <li><Link className={path === "/" ? "active" : ""} aria-current="page" to="/">Home</Link></li>
+                <li><Link className={path === "/allnotes" ? "active" : ""} aria-current="page" to="/allnotes">All Notes</Link></li>
+                <li><Link className={path === "/ablutus" ? "active" : ""} aria-current="page" to="/ablutus">About Us</Link></li>
+            </ul>
+            <div className="navRightSide flex">
+                <div id="search">
+                    <input type="search" placeholder="Search" aria-label="Search" value={searchVal} onChange={searchValChange} />
+                </div>
+                {localStorage.getItem('auth-token') ? <div id='profile' onClick={profileclk}><i className="fa-solid fa-user"></i></div> :
+                    <>
+                        <Link aria-current="page" to="/login">
+                            <button className='button'>
+                                LogIn
+                            </button>
+                        </Link>
+                        <Link aria-current="page" to="/register">
+                            <button className='checkedbutton'>
+                                Register
+                            </button>
+                        </Link>
+                    </>
+                }
 
-                    </ul>
-
-                    <form className="d-flex mx-5" onClick={()=> setCardhide(true)}>
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchVal} onChange={searchValChange}/>
-                            {/* <button className="btn btn-outline-success btn-sm" type="submit">Search</button> */}
-                    </form>
-                    {localStorage.getItem('auth-token') ? <div id='profile' onClick={profileclk}><i className="fa-solid fa-user"></i></div> :
-                        <>
-                            <Link className={path === "/login" ? "nav-link active mx-1" : "nav-link mx-1"} aria-current="page" to="/login">
-                                <button className='btn btn-primary btn-sm'>
-                                    Login
-                                </button>
-                            </Link>
-                            <Link className={path === "/register" ? "nav-link active mx-1" : "nav-link mx-1"} aria-current="page" to="/register">
-                                <button className='btn btn-primary btn-sm mx-3'>
-                                    Register
-                                </button>
-                            </Link>
-                        </>
-                    }
-
-                    <div id='card' className={cardhide ? `cardHide` : `cardShow`} >
-                        <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
-                        <p>Thank you for using this website to save your note</p>
-                        <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>
-                        <button className='btn btn-primary btn-sm mx-5' onClick={LogoutBtnClk}>Logout</button>
-                    </div>
+                <div id='card' className={cardhide ? `cardHide` : `cardShow`} >
+                    <h5>Hello {name === undefined ? "Hello" : name[0].toUpperCase() + name.substring(1)}</h5>
+                    <p>Thank you for using this website to save your note</p>
+                    <p className='totalNoteDis'> {allNote.length !== 0 ? `You Have Total ${allNote.length} ${allNote.length === 1 ? `Note` : `Notes`}` : `Please Save Your Note`}.</p>
+                    <button className='btn btn-primary btn-sm mx-5' onClick={LogoutBtnClk}>Logout</button>
                 </div>
             </div>
         </nav>
     )
 }
 
-export default Navigation;
+export default Navigation
