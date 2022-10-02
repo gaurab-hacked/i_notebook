@@ -3,7 +3,7 @@
     max-width: 1600px;
 }
 #noteForm form{
-    width: 100%;
+    width: 90%;
     margin: auto;
     padding: 10px 100px;
     display: flex;
@@ -26,8 +26,8 @@
     padding: 10px;
     outline: none;
     border: none;
-    box-shadow: 0 0 2px 0 black;
-    border: 1px solid rgb(0, 0, 0, .5);
+    box-shadow: 0 0 2px 0 var(--lightShadowColor);
+    border: 1px solid var(--lightShadowColor);
     border-radius: 2px;
     font-size: 16px;
     margin-bottom: 10px;
@@ -42,9 +42,9 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 0 2px 0 black;
+    box-shadow: 0 0 2px 0 var(--lightShadowColor);
     width: 200px;
-    background-color: rgb(57, 57, 255);
+    background-color: var(--lightButtonColor);
     color: white;
     border: none;
     border-radius: 2px;
@@ -52,7 +52,7 @@
     transition: .5s;
 }
 #noteForm form button:hover{
-    background-color: rgb(0, 0, 181);
+    background-color: var(--lightButtonHoverColor);
 }
 
 .textarea{
@@ -69,6 +69,6 @@
 
 .heading{
     font-weight: 400;
-    margin-top: 30px;
+    padding-top: 30px;
     letter-spacing: 2px;
 }

@@ -4,10 +4,13 @@ import SearchContext from '../context/SearchContext';
 import UserContext from '../context/UserContext';
 import NoteForm from './NoteForm';
 import './css/Form.css'
+import DarkmodeContext from '../context/DarkmodeContext';
 
 
 const Home = () => {
   const { setCardhide } = useContext(SearchContext);
+  const {mode} = useContext(DarkmodeContext);
+
   
   //find userDetail 
   const {userData} = useContext(UserContext);
@@ -27,7 +30,7 @@ const Home = () => {
   
 
   return (
-    <div className='container' onClick={()=> setCardhide(true)}>
+    <div onClick={()=> setCardhide(true)} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white"}:{}}>
       <h2 className='text-center heading'>Hello {fName}, Please Enter Your Notes Here!!!</h2>
       <NoteForm/>
     </div>

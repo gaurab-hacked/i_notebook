@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import DarkmodeContext from '../context/DarkmodeContext';
 
 const Aboutus = () => {
     const navigate = useNavigate();
@@ -9,11 +10,12 @@ const Aboutus = () => {
             navigate("/register")
         }// eslint-disable-next-line
     }, [])
+    const {mode} = useContext(DarkmodeContext);
 
     return (
-        <>
-            <h1 className='text-center my-5'>This page is on the progress</h1>
-        </>
+        <div style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", height:"100vh"}:{}}>
+            <h1 className='text-center py-5'>This page is on the progress</h1>
+        </div>
     )
 }
 

@@ -2,8 +2,8 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: rgb(157, 205, 204);
-    box-shadow: 0 0 5px 0 gray;
+    background-color: var(--lightPrimarycolor);
+    box-shadow: 0 0 5px 0 var(--lightShadowColor);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
 #card{
     height: 300px;
     width: 300px;
-    background-color: rgb(204, 239, 242);
+    background-color: var(--lightPrimarycolor);
     position: absolute;
     right: 20px;
     top: 10vh;
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0 0 5px 0 rgb(0, 0, 0, .7);
+    box-shadow: 0 0 5px 0 var(--lightShadowColor);
 }
 .cardHide{
     transform: translateY(-400px)!important;
@@ -59,30 +59,23 @@
     height: 85px;
     width: 85px;
     cursor: pointer;
-    box-shadow: 0 0 5px 0 gray;
+    box-shadow: 0 0 5px 0 var(--lightShadowColor);
     background-image:url('https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg?ver=6');
     background-size: cover;
     background-repeat: no-repeat;
 
 }
 
-
-
-:root{
-    --primaryColor: rgb(0, 83, 151);
-}
-
-
 #navigation{
     height: 8vh;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--lightPrimarycolor);
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1600px;
     margin: auto;
-    box-shadow: 0 0 5px 0 var(--primaryColor);
+    box-shadow: 0 0 5px 0 var(--lightShadowColor);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -102,12 +95,12 @@
     text-decoration: none;
     padding: 4px 10px;
     font-weight: 600;
-    color: rgb(0, 0, 0, .7);
+    color: var(--lightParagraphColor);
     transition: .1s;
 }
 .navlinks a:hover, .active{
-    border-bottom: 3px solid var(--primaryColor);
-    color: black!important;
+    border-bottom: 3px solid var(--lightParagraphColor);
+    color: var(--lightHeadingColor);
 }
 #logo{
     width: 20%;
@@ -121,12 +114,11 @@
     align-items: center;
     font-size: 22px;
     text-decoration: none;
-    color: rgb(0, 18, 65);
+    color: var(--lightHeadingColor);
     font-family:'Times New Roman', Times, serif;
 }
 #LogoN{
     font-size: 30px;
-    color: black;
     font-weight: 800;
 }
 .navRightSide{
@@ -136,9 +128,9 @@
 #search input{
     padding: 4px 8px;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid var(--lightHeadingColor);
     border-radius: 3px;
-    box-shadow: 0 0 2px 0 var(--primaryColor);
+    box-shadow: 0 0 2px 0 var(--lightShadowColor);
     letter-spacing: 1px;
 }
 dl, ol, ul {
@@ -153,13 +145,13 @@ ol, ul {
 .checkedbutton{
     padding: 3px 8px;
     border-radius: 2px;
-    background-color: var(--primaryColor);
+    background-color: var(--lightShadowColor);
     color: white;
     letter-spacing: 1px;
     border: none;
 }
 .button{
-    border: 1px solid var(--primaryColor);
+    border: 1px solid var(--lightShadowColor);
     padding: 2px 8px;
     border-radius: 2px;
     letter-spacing: 1px;
