@@ -3,6 +3,7 @@ import {  useNavigate } from 'react-router-dom';
 import SearchContext from '../context/SearchContext';
 import UserContext from '../context/UserContext';
 import NoteForm from './NoteForm';
+import './css/Form.css'
 
 
 const Home = () => {
@@ -27,8 +28,7 @@ const Home = () => {
 
   return (
     <div className='container' onClick={()=> setCardhide(true)}>
-      {/* <input type="text" placeholder='Search' value={searchVal} onChange={searchValChange}/> */}
-      <h2 className='text-center my-3'>Hello {fName}, Please Enter Your Note Here!!!</h2>
+      <h2 className='text-center heading'>Hello {fName}, Please Enter Your Notes Here!!!</h2>
       <NoteForm/>
     </div>
   )

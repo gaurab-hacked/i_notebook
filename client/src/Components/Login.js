@@ -25,7 +25,7 @@ const Login = () => {
 
 
 
-    
+
 
     return (
         <>
@@ -43,7 +43,9 @@ const Login = () => {
                         <label htmlFor="password">Password:</label>
                         <input type="password" name="password" id="password" placeholder="Enter Your Password" value={initialVal.password} onChange={fieldChangeFun} />
                     </div>
-                    <Link to="/register">I don't have account SignUp?</Link>
+                    <p>
+                        I don't have account <Link to="/register">SignUp?</Link>
+                    </p>
                     <button onClick={handelSubmit}>Log-In</button>
                 </form>
             </div>

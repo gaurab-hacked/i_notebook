@@ -1,33 +1,37 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/NoteContext';
+import './css/Cards.css'
+
 const EachCards = (props) => {
-    const  {updateNote} = props;
+    const { updateNote } = props;
     const { deleteNote } = useContext(NoteContext);
     const data = props.elements;
-    const [copyMsg, setCopyMsg] = useState("Copy");
-    const copyfun = () =>{
+    const [copyMsg, setCopyMsg] = useState(false);
+    const copyfun = () => {
         navigator.clipboard.writeText(data.discription);
-        setCopyMsg("Copied")
-
+        setCopyMsg(true)
     }
+    const rawTitle = data.title.slice(0, 20);
+    const title = rawTitle.slice(0, 1).toUpperCase() + rawTitle.substring(1);
+
+
     return (
         <>
-
-            <div className="card" style={{ width: "18rem" }} key={data.discription}>
-                <div className="card-body">
-                    <button onClick={copyfun} className='btn btn-secondary btn-sm' style={{position:"absolute", right:"10px"}}>{copyMsg}</button>
-                    <h5 className="card-title">{data.title}</h5>
-                    <p className="card-text">{data.discription}</p>
-                    <div className='d-flex justify-content-around'>
-                        <h6 className="card-subtitle mb-2 text-muted mx-2 my-1"> -  {data.category[0].toUpperCase() + data.category.substring(1,9) || "User"}</h6>
-                        <p style={{ color: "rgb(0,0,0,.7)", fontSize: "14px", marginTop: "5px" }}><b style={{ color: "rgb(0, 0, 0, .5)" }}> Date:</b>  {data.date === undefined ? "now" : data.date.substring(0, 10)}</p>
-                    </div>
-
-                    <div className='d-flex justify-content-around'>
-
-                        <button className='btn btn-sm btn-primary m-2' onClick={()=>updateNote(data._id)}>Update</button>
-                        <button className='btn btn-sm btn-primary m-2' onClick={() => deleteNote(data._id)} >Delete</button>
-                    </div>
+            <div id="NoteCards" key={data._id}>
+                <div className="head">
+                    <h3>{data.title.length<12?title:title+'...'}</h3>
+                    <i className="fa-regular fa-copy" id="copy" onClick={copyfun} style={copyMsg ? { color: "black" } : { color: "rgb(0, 0, 0, .6)" }}></i>
+                </div>
+                <p>
+                    {data.discription}
+                </p>
+                <div className="extrainfo">
+                    <p id="catagory"> - {data.category[0].toUpperCase() + data.category.substring(1, 9) || "General"}</p>
+                    <p> <b> Date: </b> {data.date === undefined ? "now" : data.date.substring(0, 10)}</p>
+                </div>
+                <div className="buttons">
+                    <button onClick={() => updateNote(data._id)}>update</button>
+                    <button onClick={() => deleteNote(data._id)} >delete</button>
                 </div>
             </div>
         </>

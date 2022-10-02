@@ -79,11 +79,11 @@ const Cards = (props) => {
 
                     showErrMsg ? <h1 className='text-center my-5'>Note Doesn't Exist</h1> :
                         <>
-                            <h3 style={{ textDecoration: "underline", margin: "10px 20px" }}>Your Notes:</h3>
+                            <h3 style={{ margin: "20px", fontWeight:"400", letterSpacing:"2px" }}>YOUR NOTES:</h3>
                             {
                                 totalNote.map((e) => {
                                     return (
-                                        <div key={e.discription} className="col-md-2 mx-5 my-4">
+                                        <div key={e.discription} className="col-md-2 mx-5 my-1">
                                             <EachCards elements={e} updateNote={updateNote} showErrMsg={showErrMsg} />
                                         </div>
                                     )

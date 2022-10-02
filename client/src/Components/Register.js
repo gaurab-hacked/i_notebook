@@ -19,7 +19,7 @@ const Register = () => {
             navigate('/')
         }// eslint-disable-next-line
     }, [])
-    
+
     return (
         <div id="loginform">
             <form action="#">
@@ -29,17 +29,20 @@ const Register = () => {
                 </div>
                 <div className="input">
                     <label htmlFor="name">User Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Your name" value={initialVal.name} onChange={fieldChangeFun}/>
+                    <input type="text" name="name" id="name" placeholder="Enter Your name" value={initialVal.name} onChange={fieldChangeFun} />
                 </div>
                 <div className="input">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" name="email" id="email" placeholder="Enter Your Email" value={initialVal.email} onChange={fieldChangeFun}/>
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email" value={initialVal.email} onChange={fieldChangeFun} />
                 </div>
                 <div className="input">
                     <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" id="password" placeholder="Enter Your Password" value={initialVal.password} onChange={fieldChangeFun}/>
+                    <input type="password" name="password" id="password" placeholder="Enter Your Password" value={initialVal.password} onChange={fieldChangeFun} />
                 </div>
-                <Link to="/login">I have account LogIn?</Link>
+                <p>
+
+                    I have account <Link to="/login"> LogIn?</Link>
+                </p>
                 <button onClick={handelSubmit}>Sign-Up</button>
             </form>
         </div>
