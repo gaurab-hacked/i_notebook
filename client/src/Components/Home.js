@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <div onClick={()=> setCardhide(true)} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white"}:{}}>
-      <h2 className='text-center heading'>Hello {fName}, Please Enter Your Notes Here!!!</h2>
+      <h2 className='text-center heading' style={{paddingTop:"30px"}}>Hello {fName}, Please Enter Your Notes Here!!!</h2>
       <NoteForm/>
     </div>
   )

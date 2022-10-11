@@ -23,10 +23,6 @@ const Login = () => {
         }// eslint-disable-next-line
     }, [])
 
-
-
-
-
     return (
         <>
             <div id="loginform">

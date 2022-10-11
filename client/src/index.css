@@ -18,8 +18,8 @@ body {
   --lightHeadingColor: black;
   --lightParagraphColor: rgb(0, 0, 0, .8);
   --lightShadowColor: rgb(0, 0, 0, .6);
-  --lightButtonColor: rgb(59, 59, 255);
-  --lightButtonHoverColor:rgb(0, 0, 176);
+  --lightButtonColor: rgb(0, 0, 177);
+  --lightButtonHoverColor:rgb(0, 0, 105);
 }
 
 

@@ -5,8 +5,8 @@ import SearchContext from '../context/SearchContext';
 import EachCards from './EachCards';
 
 
-const Cards = (props) => {
-    const {mode} = useContext(DarkmodeContext);
+const HomeCard = (props) => {
+    const { mode } = useContext(DarkmodeContext);
     const ref = useRef(null)
     const { updateNotef, getALlNote } = useContext(NoteContext);
     const [inpValue, setInpValue] = useState({ title: "", discription: "" });
@@ -76,12 +76,12 @@ const Cards = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='row' style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", paddingBottom:"50px"}:{}}>
+            <div className='row' style={mode === "dark" ? { backgroundColor: "rgb(25, 25, 26)", color: "white", paddingBottom: "50px" } : {}}>
                 {
 
                     showErrMsg ? <h1 className='text-center my-5'>Note Doesn't Exist</h1> :
                         <>
-                            <h3 style={{ margin: "20px", fontWeight:"400", letterSpacing:"2px" }}>YOUR ALL NOTES:</h3>
+                            <h3 style={{ margin: "20px", fontWeight: "400", letterSpacing: "2px" }}>YOUR LAST NOTE:</h3>
                             {
                                 totalNote.map((e) => {
                                     return (
@@ -98,4 +98,4 @@ const Cards = (props) => {
     )
 }
 
-export default Cards;
+export default HomeCard;
