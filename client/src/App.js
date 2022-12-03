@@ -19,7 +19,7 @@ function App() {
           <SearchState>
             <DarkModeState>
               <Navigation />
-              <Routes>
+              <Routes>                  
                 <Route path="/" element={<Home />} />
                 <Route path="/allnotes" element={<Allnotes />} />
                 <Route path="/aboutus" element={<Aboutus />} />
