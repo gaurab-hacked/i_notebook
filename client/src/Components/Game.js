@@ -82,7 +82,9 @@ const Game = () => {
                 <div className="choice paper" onClick={() => choiceBtnClk(2)}>🖐️</div>
                 <div className="choice rock" onClick={() => choiceBtnClk(3)}>🤛</div>
                 <div className="score">
-                    
+                    <h3>Score</h3>
+                    <p>You: </p>
+                    <p>Computer: </p>
                 </div>
             </div>
             <div className="results">
