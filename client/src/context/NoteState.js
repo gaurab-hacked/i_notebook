@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NoteContext from "./NoteContext";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -124,11 +124,6 @@ const NoteState = (props) => {
             <NoteContext.Provider value={{ allNote, postNote, getALlNote, deleteNote, updateNotef }}>
                 {props.children}
             </NoteContext.Provider>
-            <ToastContainer
-                position="top-right"
-                autoClose={2000}
-                theme="colored"
-            />
         </>
     )
 

@@ -18,7 +18,7 @@ const Home = () => {
 
   const Name = rawName[0].toUpperCase() + rawName.substring(1);
   const fName = Name.split(" ")[0];
-  
+    
   //to navigate unathorige users
   const navigate = useNavigate();
   useEffect(() => {
