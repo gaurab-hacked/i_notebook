@@ -1,44 +1,77 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#loginform{
-    max-height: 100vh;
-    min-height: 96vh;
-    padding-top: 10px;
-    min-width: 100%;
-    max-width: 1600px;
-    background-color: white;
+
+#container {
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
+    background-color: rgb(225, 225, 225);
     justify-content: center;
+    gap: 60px;
+    flex-direction: row;
 }
-#loginform form{
+
+#paragraph {
+    /* background-color: yellow; */
+    height: 40vh;
+    width: 40%;
+    padding: 40px;
+}
+
+#paragraph h2 {
+    margin-top: 20px;
+    color: blue;
+    font-weight: 700;
+    font-size: xx-large;
+    font-style: italic;
+    text-align: center;
+}
+
+#paragraph p {
+    color: black;
+    font-size: x-large;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+#loginform {
+    border-radius: 8px;
+    box-shadow: -6px 5px 13px -2px rgba(0, 0, 0, 0.78);
+    -webkit-box-shadow: -6px 5px 13px -2px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: -6px 5px 13px -2px rgba(0, 0, 0, 0.78);
+}
+
+#loginform form {
     min-width: 450px;
     max-width: 600px;
-    border-radius: 10px;
     background-color: white;
     padding: 50px;
-    box-shadow: 0 0 5px 0 black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    box-shadow:inset 0 0 10px 0 black;
 }
-#loginform form .input{
+
+
+/* #loginform form .input {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-#loginform form .input label{
+} */
+
+/* #loginform form .input label {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     font-size: 18px;
     cursor: pointer;
-}
-#loginform form .input input{
+} */
+
+/* #loginform form .input input {
     padding: 8px 10px;
     font-size: 17px;
     outline: none;
@@ -48,52 +81,55 @@
     box-shadow: inset 0 0 2px 0 black;
     width: 100%;
     letter-spacing: 1px;
-    
-}
-#loginform form h3{
+
+} */
+
+#loginform form h3 {
     text-align: center;
     margin-top: 30px;
     color: rgb(0, 0, 0, .7);
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
-    font-weight: 500;    
+    font-weight: 500;
     font-size: 20px;
 }
-#loginform form h1{    
+
+#loginform form h1 {
     text-align: center;
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
-    font-weight: 500;  
-    color: rgb(0, 6, 42); 
+    font-weight: 500;
+    color: rgb(0, 6, 42);
 }
 
-#loginform form p{
+#loginform form p {
     color: rgb(0, 0, 0, .6);
     font-family: Arial, Helvetica, sans-serif;
-    margin: 10px 0;
+    margin: 10px 8px;
     letter-spacing: 1px;
 }
-#loginform form a{
+
+#loginform form a {
     text-decoration: none;
 }
 
 
-#loginform form button{
-    margin: 0 30px;
+#loginform form button {
+    margin: 0 120px;
     padding: 7px;
     font-size: 20px;
     letter-spacing: 2px;
-    border:none;
+    border: none;
     background-color: rgb(0, 44, 115);
     border-radius: 2px;
     color: white;
     cursor: pointer;
-    box-shadow: inset 0 0 5px 0 rgb(68, 68, 68, .8);
     transition: .1s;
 }
-#loginform form button:hover{
+
+#loginform form button:hover {
     box-shadow: inset 0 0 5px 0 black;
     background-color: rgb(0, 24, 62);
 }
