@@ -41,7 +41,7 @@ const Navigation = () => {
                 <ul className="navlinks flex">
                     <li><Link className={path === "/" ? "active" : ""} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", borderBottomColor:"rgb(255, 255, 255, .6)"}:{}} aria-current="page" to="/">Home</Link></li>
                     <li><Link className={path === "/allnotes" ? "active" : ""} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", borderBottomColor:"rgb(255, 255, 255, .6)"}:{}} aria-current="page" to="/allnotes">All Notes</Link></li>
-                    <li><Link className={path === "/aboutus" ? "active" : ""} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", borderBottomColor:"rgb(255, 255, 255, .6)"}:{}} aria-current="page" to="/aboutus">About Us</Link></li>
+                    <li><Link className={path === "/game" ? "active" : ""} style={mode==="dark"?{backgroundColor:"rgb(25, 25, 26)", color:"white", borderBottomColor:"rgb(255, 255, 255, .6)"}:{}} aria-current="page" to="/game">Game</Link></li>
                 </ul>
                 <div className="navRightSide flex">
                     <div id="search" >

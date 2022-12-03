@@ -65,7 +65,7 @@ const UserState = (props) => {
     return (
         <>
             <UserContext.Provider value={{ postData, userData, setUserData }}>
-                {props.children};
+                {props.children}
             </UserContext.Provider>
             <ToastContainer
                 position="top-right"

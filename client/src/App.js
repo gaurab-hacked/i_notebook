@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Aboutus from "./Components/Aboutus";
+import Game from "./Components/Game";
 import Allnotes from "./Components/Allnotes";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -22,7 +22,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/allnotes" element={<Allnotes />} />
-                <Route path="/aboutus" element={<Aboutus />} />
+                <Route path="/game" element={<Game />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
               </Routes>
